@@ -41,8 +41,17 @@ int main(void){
 				std::cin >> selection; //selection needs initialized before running. Fix at home.
 				turn--;
 			}
-			//Win Check
-			if 
+			//Win Check. Fill out win conditions
+			if (tiles[0] == tiles[1] && tiles[0] == tiles[2]) ||
+			(tiles[3] == tiles[4] && tiles[3] == tiles[5]) ||
+			(tiles[6] == tiles[7] && tiles[6] == tiles[8]) ||
+			(tiles[6] == tiles[3] && tiles[6] == tiles[0]) ||
+			(tiles[7] == tiles[4] && tiles[7] == tiles[1]) ||
+			(tiles[8] == tiles[5] && tiles[8] == tiles[2]) ||
+			(tiles[6] == tiles[4] && tiles[6] == tiles[2]) ||
+			(tiles[0] == tiles[4] && tiles[0] == tiles[8]){
+				
+			}
 		}
 		
 		if (player1 == "x"){
