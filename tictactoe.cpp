@@ -2,6 +2,12 @@
 #include <stdlib.h>
 //#include tictactoe.hpp
 
+/*
+TODO List
+-Take player selections - line 42
+Check that selections have not already been claimed by either player
+*/
+
 int main(void){
 	bool playing = true;
 	std::string player1 = "";
@@ -34,11 +40,13 @@ int main(void){
 				std::cout << playerX << ", choose a tile to place an X in by selecting a number 1-9.\n";
 				std::cout << "You may not take a tile that has already been claimed by a player.\n";
 				std::cin >> selection;
+				//Separate function for selection validation.
+				
 				turn++;
 			} else{
 				std::cout << playerO << ", choose a tile to place an X in by selecting a number 1-9.\n";
 				std::cout << "You may not take a tile that has already been claimed by a player.\n";
-				std::cin >> selection; //selection needs initialized before running. Fix at home.
+				std::cin >> selection;
 				turn--;
 			}
 			//Win Check. Fill out win conditions
@@ -55,6 +63,7 @@ int main(void){
 				} else{
 					std::cout << playerO << " wins!";
 				}
+				
 			}
 		}
 		
