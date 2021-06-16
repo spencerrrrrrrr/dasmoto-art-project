@@ -50,7 +50,11 @@ int main(void){
 			(tiles[8] == tiles[5] && tiles[8] == tiles[2]) ||
 			(tiles[6] == tiles[4] && tiles[6] == tiles[2]) ||
 			(tiles[0] == tiles[4] && tiles[0] == tiles[8]){
-				
+				if (turn == 2){
+					std::cout << playerX << " wins!";
+				} else{
+					std::cout << playerO << " wins!";
+				}
 			}
 		}
 		
