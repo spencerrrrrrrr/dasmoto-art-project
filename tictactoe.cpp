@@ -41,7 +41,9 @@ int main(void){
 				std::cout << "You may not take a tile that has already been claimed by a player.\n";
 				std::cin >> selection;
 				//Separate function for selection validation.
-				
+				if (selection != 'X') && (selection != 'O'){
+					std::replace(tiles[0], tiles[8], selection, 'X');
+				}
 				turn++;
 			} else{
 				std::cout << playerO << ", choose a tile to place an X in by selecting a number 1-9.\n";
