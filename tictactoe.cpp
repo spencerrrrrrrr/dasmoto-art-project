@@ -6,12 +6,15 @@
 TODO List
 -Take player selections - line 42
 Check that selections have not already been claimed by either player
+Fix tile references upon player selections
 */
 
 int main(void){
 	bool playing = true;
 	std::string player1 = "";
 	std::string player2 = "";
+	std::string playerX = "";
+	std::string playerO = "";
 	int turn = 1;
 	std::string selection = "";
 	char tiles[] = {'1','2','3', '4', '5', '6', '7', '8', '9'};
@@ -29,20 +32,26 @@ int main(void){
 		
 		if (first_move == 1){
 			std::cout << player1 << " goes first!\n";
+			playerX = player1;
+			playerO = player2;
 		} else{
 			std::cout << player2 << " goes first!\n";
+			playerX = player2;
+			playerO = player1;
 		}
-		
-		
-		
-		for (int i = 0 , i < 9, i++){
+				
+		for (int i = 0 ; i < 9; i++){
 			if (turn == 1){
 				std::cout << playerX << ", choose a tile to place an X in by selecting a number 1-9.\n";
 				std::cout << "You may not take a tile that has already been claimed by a player.\n";
 				std::cin >> selection;
-				//Separate function for selection validation.
-				if (selection != 'X') && (selection != 'O'){
+				//Separate function for selection validation. Put into functions file later.
+				if (tiles{selection} != 'X' && tiles{selection} != 'O' && turn == 1){
 					std::replace(tiles[0], tiles[8], selection, 'X');
+				} else if (tiles{selection} != 'X') && (tiles{selection] != 'O') && (turn == 2){
+					std::replace(tiles[0], tiles[8], selection, 'O');
+				} else{
+					std::cout << "That is an invalid choice. Please select a valid tile.\n";
 				}
 				turn++;
 			} else{
