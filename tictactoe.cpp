@@ -12,26 +12,28 @@ int main(void){
 	char selection = ' ';
 	char tiles[] = {'1','2','3', '4', '5', '6', '7', '8', '9'};
 	
+	std::cout << "Let's play TicTacToe!\n";
+	std::cout << "Player One, enter your name.\n";
+	std::cin >> player1;
+	std::cout << "\nPlayer Two, enter your name.\n";
+	std::cin >> player2;
+	
+	std::cout << "The first move will be decided by the computer.\n";
+	int first_move = rand() % 2 + 1;
+	//Generates random number to determine first player
+	
+	if (first_move == 1){
+		std::cout << player1 << " goes first!\n";
+		playerX = player1;
+		playerO = player2;
+	} else{
+		std::cout << player2 << " goes first!\n";
+		playerX = player2;
+		playerO = player1;
+	}		
+	
 	while (playing) {
-		std::cout << "Let's play TicTacToe!\n";
-		std::cout << "Player One, enter your name.\n";
-		std::cin >> player1;
-		std::cout << "\nPlayer Two, enter your name.\n";
-		std::cin >> player2;
-		
-		std::cout << "The first move will be decided by the computer.\n";
-		int first_move = rand() % 2 + 1;
-		//Generates random number to determine first player
-		
-		if (first_move == 1){
-			std::cout << player1 << " goes first!\n";
-			playerX = player1;
-			playerO = player2;
-		} else{
-			std::cout << player2 << " goes first!\n";
-			playerX = player2;
-			playerO = player1;
-		}		
+
 		if (turn == 1){
 			std::cout << playerX << ", choose a tile to place an X in by selecting a number 1-9.\n";
 			std::cout << "You may not take a tile that has already been claimed by a player.\n";
