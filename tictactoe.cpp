@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 //#include tictactoe.hpp
+//flip if statements to catch bad input
 
 int main(void){
 	bool playing = true;
@@ -39,28 +40,41 @@ int main(void){
 			std::cout << "You may not take a tile that has already been claimed by a player.\n";
 			std::cin >> selection;
 			//Separate function for selection validation. Put into functions file later.
-			for (int x = 0; x < 9; x++){
-				if (selection == tiles[x] && selection != 'X' && selection != 'O' && turn == 1){
-					tiles[x] = 'X';
-				} else if (selection == tiles[x] && selection != 'X' && selection != 'O' && turn == 'O'){
-					tiles[x] = 'O'; 
-				} else{
-				std::cout << "That is an invalid choice. Please select a valid tile.\n";
+			
+			if (selection != 'X' && selection != 'O' && turn == 1){
+				for (int x = 0; x < 9; x++){
+					if (selection == tiles[x]){
+						tiles[x] = 'X';
+					}
 				}
+			} else if (selection != 'X' && selection != 'O' && turn == 2){
+				for (int x = 0; x < 9; x++){
+					if (selection == tiles[x]){
+						tiles[x] = 'O';
+					}
+				}
+			} else{
+				std::cout << "That is an invalid choice. Please select a valid tile.\n";
 			}
 			turn++;
 		} else{
 			std::cout << playerO << ", choose a tile to place an X in by selecting a number 1-9.\n";
 			std::cout << "You may not take a tile that has already been claimed by a player.\n";
 			std::cin >> selection;
-			for (int x = 0; x < 9; x++){
-				if (selection == tiles[x] && selection != 'X' && selection != 'O' && turn == 1){
-					tiles[x] = 'X';
-				} else if (selection == tiles[x] && selection != 'X' && selection != 'O' && turn == 'O'){
-					tiles[x] = 'O'; 
-				} else{
-				std::cout << "That is an invalid choice. Please select a valid tile.\n";
+			if (selection != 'X' && selection != 'O' && turn == 1){
+				for (int x = 0; x < 9; x++){
+					if (selection == tiles[x]){
+						tiles[x] = 'X';
+					}
 				}
+			} else if (selection != 'X' && selection != 'O' && turn == 2){
+				for (int x = 0; x < 9; x++){
+					if (selection == tiles[x]){
+						tiles[x] = 'O';
+					}
+				}
+			} else{
+				std::cout << "That is an invalid choice. Please select a valid tile.\n";
 			}
 			turn--;
 		}
