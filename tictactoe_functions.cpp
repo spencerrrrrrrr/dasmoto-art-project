@@ -28,7 +28,7 @@ void game_board(){
 	std::cout << tiles[0] << "|" << tiles[1] << "|" << tiles[2];
 }
 
-void switch_playr_move(std::string actv_playr, char tiles[9]){
+char* switch_playr_move(std::string actv_playr, char tiles[9]){
 	std::string actv_playr = "";
 	char selection = ' ';
 	bool valid = true;
@@ -42,12 +42,12 @@ void switch_playr_move(std::string actv_playr, char tiles[9]){
 			tiles[x] = 'X';
 			turn++;
 			valid = true;
-			break;
+			return tiles;
 		} else if (selection == tiles[x] && turn == 2){
 			tiles[x] = 'O';
 			turn--;
 			valid = true;
-			break;
+			return tiles;
 		} else {
 			valid = false;
 		}

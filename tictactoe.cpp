@@ -57,7 +57,7 @@ int main(void){
 			
 		}
 		
-		if (player1 == "q" || player2 == "q" || selection == 'q'){
+		if (player1 == "q" || player2 == "q"){
 			playing = false;
 		}
 	}
