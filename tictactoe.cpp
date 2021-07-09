@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h> //for rand num
-#include "tictactoe.hpp"
+#include "tictactoe_functions.cpp"
 
 int main(void){
 	bool playing = true;
@@ -34,9 +34,13 @@ int main(void){
 	
 	while (playing) {
 		if (turn == 1){
-			switch_playr_move(playerX, tiles);
+			switch_playr_move(playerX, tiles, turn);
+			game_board(tiles);
+			turn++;
 		} else{
-			switch_playr_move(playerO, tiles);
+			switch_playr_move(playerO, tiles, turn);
+			game_board(tiles);
+			turn--;
 		}
 		
 		if (tiles[0] == tiles[1] && tiles[0] == tiles[2] ||
