@@ -33,34 +33,18 @@ int main(void){
 	}		
 	
 	while (playing) {
+		game_board(tiles);
+		
 		if (turn == 1){
 			switch_playr_move(playerX, tiles, turn);
-			game_board(tiles);
 			turn++;
 		} else{
 			switch_playr_move(playerO, tiles, turn);
-			game_board(tiles);
 			turn--;
 		}
 		
-		if (tiles[0] == tiles[1] && tiles[0] == tiles[2] ||
-		tiles[3] == tiles[4] && tiles[3] == tiles[5] ||
-		tiles[6] == tiles[7] && tiles[6] == tiles[8] ||
-		tiles[6] == tiles[3] && tiles[6] == tiles[0] ||
-		tiles[7] == tiles[4] && tiles[7] == tiles[1] ||
-		tiles[8] == tiles[5] && tiles[8] == tiles[2] ||
-		tiles[6] == tiles[4] && tiles[6] == tiles[2] ||
-		tiles[0] == tiles[4] && tiles[0] == tiles[8]){
-			if (turn == 2){
-				std::cout << playerX << " wins!";
-				playing = false;
-			} else{
-				std::cout << playerO << " wins!";
-				playing = false;
-			}
+		playing = win_chk(tiles, playerX, playerO, turn);
 			
-		}
-		
 		if (player1 == "q" || player2 == "q"){
 			playing = false;
 		}

@@ -32,24 +32,56 @@ char* switch_playr_move(std::string actv_playr, char tiles[9], int turn){
 	char selection = ' ';
 	bool valid = true;
 	
-	std::cout << actv_playr << ", choose a tile to place an X in by selecting a number 1-9.\n";
-	std::cout << "You may not take a tile that has already been claimed by a player.\n";
-	std::cin >> selection;
-	
-	for (int x = 0; x < 9; x++){
-		if (selection == tiles[x] && turn == 1 && selection != 'X' && selection != 'O'){
-			tiles[x] = 'X';
-			valid = true;
-			return tiles;
-		} else if (selection == tiles[x] && turn == 2 && selection != 'X' && selection != 'O'){
-			tiles[x] = 'O';
-			valid = true;
-			return tiles;
-		} else {
-			valid = false;
+	do {
+		std::cout << actv_playr << ", choose a tile to place an X in by selecting a number 1-9.\n";
+		std::cout << "You may not take a tile that has already been claimed by a player.\n";
+		std::cin >> selection;
+		
+		for (int x = 0; x < 9; x++){
+			if (selection == tiles[x] && turn == 1 && selection != 'X' && selection != 'O'){
+				tiles[x] = 'X';
+				valid = true;
+				return tiles;
+			} else if (selection == tiles[x] && turn == 2 && selection != 'X' && selection != 'O'){
+				tiles[x] = 'O';
+				valid = true;
+				return tiles;
+			} else {
+				valid = false;
+			}
+		}
+		if (valid == false){
+			std::cout << "That is an invalid choice. Please select a valid tile.\n";
+		}
+	} while(valid == false);
+}
+
+bool win_chk(char tiles[9], std::string playerX, std::string playerO, int turn){
+	if (tiles[0] == tiles[1] && tiles[0] == tiles[2] ||
+	tiles[3] == tiles[4] && tiles[3] == tiles[5] ||
+	tiles[6] == tiles[7] && tiles[6] == tiles[8] ||
+	tiles[6] == tiles[3] && tiles[6] == tiles[0] ||
+	tiles[7] == tiles[4] && tiles[7] == tiles[1] ||
+	tiles[8] == tiles[5] && tiles[8] == tiles[2] ||
+	tiles[6] == tiles[4] && tiles[6] == tiles[2] ||
+	tiles[0] == tiles[4] && tiles[0] == tiles[8]){
+		if (turn == 2){
+			std::cout << playerX << " wins!";
+			return false;
+		} else if (turn == 1){
+			std::cout << playerO << " wins!";
+			return false;
 		}
 	}
-	if (valid == false){
-		std::cout << "That is an invalid choice. Please select a valid tile.\n";
+	int stale = 0;
+	for (int x = 0; x < 9; x++){
+		if (tiles[x] == 'X' || tiles[x] == 'O'){
+			stale++;
+		}
 	}
+	if (stale==9){
+		std::cout << "You've reached a stalemate!";
+		return false;
+	}
+	return true;
 }
