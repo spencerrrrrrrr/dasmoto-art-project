@@ -5,7 +5,27 @@ h1 {
     text-align: center;
 }
 
+.price {
+    color: blue;
+}
+
+h2 {
+    color: white;
+}
+
 h1, h2 {
     font-family: Helvetica;
     font-weight: bold;
+}
+
+.brushes {
+    background-color: mediumspringgreen;    
+}
+
+.frames {
+    background-color: lightcoral;
+}
+
+.paint {
+    background-color: skyblue;
 }
